@@ -41,7 +41,7 @@ const Header = ({ activeHeading }) => {
 
   return (
     <>
-      <div className={`${styles.section}`}>
+      <div className={`${styles.section} mr-0 ml-0 w-auto` }>
         <div className='hidden lg:flex items-center justify-between h-16 px-4 bg-gray-800 text-white'>
           <div>
             <Link to='/'>
@@ -80,13 +80,13 @@ const Header = ({ activeHeading }) => {
           </div>
         </div>
       </div>
-      <div className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} transition hidden lg:flex items-center justify-between`}>
+      <div className={`${active === true ? "shadow-sm fixed top-0 left-0 z-10" : null} transition hidden lg:flex items-center justify-between bg-gray-300`}>
 
-        <div className={`${styles.section} relative  ${styles.normalFlex} justify-between bg-gray-400`}>
+        <div className={`${styles.section} relative  ${styles.normalFlex} justify-between mr-8`}>
           {/* categories */}
-          <div className='relative h-[60px] mt-[10px]  w-[270px]  hidden 1000px:block  bg-gray-400' >
+          <div className='relative h-[60px] mt-[10px]  w-[270px]  hidden 1000px:block bg-gray-500' >
             <BiMenuAltLeft size={30} className='absolute top-3 left-2' />
-            <button className='h-[100%] w-full flex justify-between items-center pl-10 bg-slate-400 font-sans text-lg font-[500] select-none rounded-t-md' onClick={() => setDropDown(!dropDown)}>
+            <button className='h-[100%] w-full flex justify-between items-center pl-10  font-sans text-lg font-[500] select-none rounded-t-md' onClick={() => setDropDown(!dropDown)}>
               All categories
               <IoIosArrowDown size={20} className='text-white' />
             </button>
@@ -96,12 +96,12 @@ const Header = ({ activeHeading }) => {
           </div>
         </div>
         {/* navbar */}
-        <div className={`${styles.noramlFlex}`}>
+        <div className={`${styles.noramlFlex}  h-[70px]`}>
           <Navbar active={activeHeading} />
         </div>
 
         {/* items in right */}
-        <div className={` ${styles.noramlFlex}`}>
+        <div className={` ${styles.noramlFlex}  h-[70px]`}>
           <div className='relative cursor-pointer mr-[15px]'>
             <AiOutlineHeart size={30} className='rgb(255 2555 255/83%)' />
             <span className=' absolute right-0 top-0 rounded-full bg-[#3bc177] w-4 h-4 top right p-0 m-0 text-white font-mono text-[12px] leading-tight text-center'>
