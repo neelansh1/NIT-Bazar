@@ -1,13 +1,35 @@
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import styles from '../../styles/styles'
+import axios from "axios";
 import {Link} from "react-router-dom";
+import {server} from "../../server"
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false); // Initialize as boolean
   const [Name, setName] = useState('');
+
+  
+  const handleSubmit = async (e) => {
+
+    const config={headers: {"Content-Type":"multipart/form-data"}};
+    const newForm=new FormData();
+
+    newForm.append("name", Name);
+    newForm.append("email", email);
+    newForm.append("password", password);
+    
+    axios.post(`${server}/user/create-user`, { Name, email, password })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error)
+      });
+  };
+
 
   return (
     <div className='min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8'>
@@ -19,7 +41,7 @@ const Signup = () => {
 
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='w-50% sm:w-full bg-white py-8 px-4 shadow sm-rounded-lg sm:px-10 relative'>
-          <form className='space-y-6'>
+          <form className='space-y-6' onSubmit={handleSubmit}>
 
 
             {/* Full Name*/}
