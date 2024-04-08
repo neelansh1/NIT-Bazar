@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import styles from '../../styles/styles'
 import axios from "axios";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {server} from "../../server"
 
 const Signup = () => {
@@ -10,20 +10,23 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false); // Initialize as boolean
   const [Name, setName] = useState('');
-
+  const navigate=useNavigate();
   
   const handleSubmit = async (e) => {
 
     const config={headers: {"Content-Type":"multipart/form-data"}};
     const newForm=new FormData();
-
+    
     newForm.append("name", Name);
     newForm.append("email", email);
     newForm.append("password", password);
     
     axios.post(`${server}/user/create-user`, { Name, email, password })
       .then((res) => {
-        console.log(res);
+        if(res.data.success===true){
+          navigate("/");
+        }
+
       })
       .catch((error) => {
         console.log(error)
