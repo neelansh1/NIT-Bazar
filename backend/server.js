@@ -9,6 +9,7 @@ process.on("uncaughtException", (err) => {
 //connect database
 connectDatabase();
 
+
   // config
   if (process.env.NODE_ENV !== "PRODUCTION") {
     require("dotenv").config({
