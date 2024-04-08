@@ -84,6 +84,8 @@ const Header = ({ activeHeading }) => {
 
         <div className={`${styles.section} relative  ${styles.normalFlex} justify-between mr-8`}>
           {/* categories */}
+
+          
           <div className='relative h-[60px] mt-[10px]  w-[270px]  hidden 1000px:block bg-gray-500' >
             <BiMenuAltLeft size={30} className='absolute top-3 left-2' />
             <button className='h-[100%] w-full flex justify-between items-center pl-10  font-sans text-lg font-[500] select-none rounded-t-md' onClick={() => setDropDown(!dropDown)}>

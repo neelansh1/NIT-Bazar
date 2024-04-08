@@ -17,14 +17,27 @@ const DropDown = ({ categoriesData, setDropDown }) => {
           categoriesData.map((category, index) => (
             <div
               key={index}
-              className={`${styles.normalFlex} cursor-pointer`}
+              className={`${styles.normalFlex} cursor-pointer flex`}
               onClick={() => submitHandle(category)}
             >
-              {/* Assuming category.image_Url is an array of image URLs */}
-              {category.image_Url.map((imageUrl, imgIndex) => (
+              {category.image_Url && Array.isArray(category.image_Url) && category.image_Url.length > 0 ? (
+                category.image_Url.map((imageUrl, imgIndex) => (
+                  <img
+                    key={imgIndex}
+                    src={imageUrl}
+                    style={{
+                      width: "25px",
+                      height: "25px",
+                      objectFit: "contain",
+                      marginLeft: "10px",
+                      userSelect: "none",
+                    }}
+                    alt=''
+                  />
+                ))
+              ) : (
                 <img
-                  key={imgIndex}
-                  src={imageUrl}
+                  src={category.image_Url}
                   style={{
                     width: "25px",
                     height: "25px",
@@ -34,8 +47,8 @@ const DropDown = ({ categoriesData, setDropDown }) => {
                   }}
                   alt=''
                 />
-              ))}
-              <h3 className='m-3 select-none'>{category.title}</h3>
+              )}
+              <h3 className='m-3 select-none flex'>{category.title}</h3>
             </div>
           ))}
       </div>
